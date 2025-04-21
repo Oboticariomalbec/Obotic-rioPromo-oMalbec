@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oferta Exclusiva - Malbec Blue</title>
+  <style>
+    :root {
+      --primary-color: #1e3d59;
+      --secondary-color: #2c587a;
+      --button-hover: #162a3f;
+      --light-bg: #f4f4f4;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      color: #333;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 160px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--primary-color);
+    }
+
+    .price {
+      text-align: center;
+      font-size: 26px;
+      color: var(--primary-color);
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .perfume-image {
+      display: block;
+      margin: 20px auto;
+      max-width: 200px;
+      border-radius: 12px;
+    }
+
+    .testimonial {
+      display: flex;
+      align-items: center;
+      background: var(--light-bg);
+      padding: 15px;
+      border-left: 5px solid var(--primary-color);
+      margin: 12px 0;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .testimonial img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-buy {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: var(--secondary-color);
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      animation: fadeInMessage 0.5s ease-in-out;
+      z-index: 999;
+    }
+
+    .message-buy img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeInMessage {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input[type="text"], input[type="email"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: var(--button-hover);
+    }
+
+    .pix-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .pix-key {
+      display: none;
+    }
+
+    #pixSuccess {
+      display: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-top: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #testimonials {
+      margin-top: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: transparent;
+      margin-top: 30px;
+    }
+
+    footer img {
+      max-width: 140px;
+      opacity: 0.85;
+    }
+
+    #final-msg {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="images (4).png" alt="Boticário Logo" class="logo">
+    <h1>Promoção Especial</h1>
+    <h2>Malbec Blue</h2>
+    <p>O perfume masculino que conquista, agora com preço imperdível!</p>
+    <div class="price">Por apenas R$ 49,90</div>
+    <img src="BOT_83188_MALBEC-BLEU_COLONIA_AMBIENTADA.jpg" alt="Perfume Malbec Blue" class="perfume-image">
+    <div id="testimonials"></div>
+
+    <h2>Preencha para receber:</h2>
+    <form onsubmit="handleForm(event)">
+      <input type="text" name="nome" placeholder="Seu Nome Completo" required>
+      <input type="text" name="cpf" placeholder="Seu CPF" required>
+      <input type="email" name="email" placeholder="Seu Email" required>
+      <input type="text" name="cep" placeholder="Seu CEP" required>
+      <input type="text" name="rua" placeholder="Rua e Número" required>
+      <input type="text" name="cidade" placeholder="Cidade" required>
+      <input type="text" name="estado" placeholder="Estado" required>
+      <button type="submit">Finalizar Pedido</button>
+    </form>
+
+    <div id="final-msg">Tudo certo! Agora finalize o pagamento.</div>
+
+    <div class="pix-container" id="pixSection">
+      <h2 style="color: var(--primary-color);">Pagamento via Pix</h2>
+      <div class="pix-key" id="pixKey">00020126580014BR.GOV.BCB.PIX0136bc22750c-8241-4d57-9120-e8278b3fb97d520400005303986540549.905802BR5924Deivida Cristina Barbosa6009SAO PAULO62140510dqeERovuox63040E80
+</div>
+      <button onclick="copyPixKey()">Copiar Chave Pix</button>
+      <div id="pixSuccess">Chave Pix copiada com sucesso!</div>
+    </div>
+  </div>
+
+  <div id="messageBuy" class="message-buy" style="display:none;">
+    <img src="malbec-bleu_B83188_conceito.jpg" alt="Malbec Blue">
+    <span id="buyText">Lucas Oliveira (Goiânia) comprou</span>
+  </div>
+
+  <footer>
+    <img src="logo-boticario-2048.png" alt="Logo Boticário">
+  </footer>
+
+  <script>
+    const nomes = ["Ana Paula", "Lucas Oliveira", "Carlos Mendes", "Juliana Rocha", "Bruno Souza", "Marina Lima", "Gabriel Torres", "Patrícia Alves", "Fernanda Costa", "Tiago Ribeiro"];
+    const mensagens = [
+      "Chegou super rápido e o perfume é maravilhoso!",
+      "Comprei pro meu pai, ele adorou!",
+      "A fragrância é única, fixação excelente!",
+      "Nunca imaginei um perfume tão marcante por esse preço.",
+      "Chegou em 2 dias e muito bem embalado.",
+      "Já é a terceira vez que compro, não troco por nada!",
+      "Simplesmente apaixonada pelo cheiro.",
+      "Meu namorado amou o presente!",
+      "Recomendo muito, fixação top.",
+      "Vale cada centavo, sensacional!"
+    ];
+
+    const testimonials = Array.from({ length: 80 }, (_, i) => ({
+      nome: nomes[i % nomes.length],
+      mensagem: mensagens[i % mensagens.length],
+      tempo: `${20 + i * 2} segundos atrás`
+    }));
+
+    const mensagensCompra = [
+      "Lucas Oliveira (Goiânia) comprou",
+      "Bruna Silva (São Paulo) finalizou o pedido",
+      "Carlos Mendes (Recife) garantiu o dele",
+      "Juliana Rocha (Curitiba) aproveitou a promoção",
+      "Fernando Lima (Brasília) não perdeu tempo"
+    ];
+
+    let i = 0;
+    function renderTestimonials() {
+      if (i >= testimonials.length) return;
+      const t = testimonials[i];
+      const container = document.getElementById("testimonials");
+      const div = document.createElement("div");
+      div.className = "testimonial";
+      div.innerHTML = `<img src="malbec-bleu_B83188_conceito.jpg" alt="Foto"><div><strong>${t.nome}</strong><br>${t.mensagem}<br><small>${t.tempo}</small></div>`;
+      container.appendChild(div);
+      i++;
+      setTimeout(renderTestimonials, 3000);
+    }
+
+    function showBuyMessage() {
+      const el = document.getElementById("messageBuy");
+      const text = document.getElementById("buyText");
+      const msg = mensagensCompra[Math.floor(Math.random() * mensagensCompra.length)];
+      text.textContent = msg;
+      el.style.display = "flex";
+      setTimeout(() => el.style.display = "none", 3000);
+    }
+
+    function copyPixKey() {
+      const pixKey = document.getElementById("pixKey").innerText;
+      navigator.clipboard.writeText(pixKey).then(() => {
+        const msg = document.getElementById("pixSuccess");
+        msg.style.display = "block";
+        requestAnimationFrame(() => {
+          msg.style.opacity = "1";
+        });
+        setTimeout(() => {
+          msg.style.opacity = "0";
+          setTimeout(() => {
+            msg.style.display = "none";
+          }, 300);
+        }, 3000);
+      });
+    }
+
+    function handleForm(event) {
+      event.preventDefault();
+      document.getElementById("final-msg").style.display = "block";
+      document.querySelector(".pix-container button").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    renderTestimonials();
+    setInterval(showBuyMessage, 4000);
+  </script>
+</body>
+</html>
